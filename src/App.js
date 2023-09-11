@@ -58,7 +58,7 @@ function Friend({ friendData }) {
           {friendData.name} owe you {friendData.balance}
         </p>
       ) : (
-        <p className="none"></p>
+        friendData.balance === 0(<p className="none"></p>)
       )}
     </li>
   );
