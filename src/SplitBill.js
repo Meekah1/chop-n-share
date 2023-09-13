@@ -10,7 +10,13 @@ function SplitBill() {
       <label htmlFor="">🧔🏽Your expenses</label>
       <input type="text" />
       <label htmlFor="">🧑🏻‍🤝‍🧑🏻X's Expenses</label>
-      <input type="text" />
+      <input type="text" disabled />
+
+      <label htmlFor="">🤑 Who is paying the Bill</label>
+      <select name="" id="">
+        <option value="user">You</option>
+        <option value="friend">Friend</option>
+      </select>
 
       <Button>Split bill</Button>
     </form>
