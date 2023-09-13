@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 
 function FormAddFriend() {
   return (
@@ -8,7 +9,7 @@ function FormAddFriend() {
       <label htmlFor="">Image Url</label>
       <input type="text" />
 
-      <button className="button"></button>
+      <Button>Add</Button>
     </form>
   );
 }
