@@ -1,5 +1,6 @@
 // import FriendList from "./FriendList";
-import FriendList from "./FriendList";
+// import FriendList from "./FriendList";
+import FormAddFriend from "./FormAddFriend";
 
 const initialFriends = [
   {
@@ -57,9 +58,12 @@ function Friend({ friendData }) {
         <p className="green">
           {friendData.name} owe you {friendData.balance}
         </p>
+      ) : friendData.balance === 0 ? (
+        <p className="none">You and {friendData.name} are even.</p>
       ) : (
-        friendData.balance === 0(<p className="none"></p>)
+        <p>""</p>
       )}
+      <button className="button">Select</button>
     </li>
   );
 }
