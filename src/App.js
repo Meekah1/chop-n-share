@@ -1,6 +1,6 @@
-// import FriendList from "./FriendList";
-// import FriendList from "./FriendList";
+import Button from "./Button";
 import FormAddFriend from "./FormAddFriend";
+import SplitBill from "./SplitBill";
 
 const initialFriends = [
   {
@@ -23,13 +23,16 @@ const initialFriends = [
   },
 ];
 
-export default function App({ data = { initialFriends } }) {
+export default function App() {
   return (
     <div className="app">
       <div className="sidebar">
-        {/* <FriendList data={data} /> */}
         <List />
+        <Button>Add Friend</Button>
+        <FormAddFriend />
+        <Button>Close</Button>
       </div>
+      <SplitBill />
     </div>
   );
 }
@@ -63,7 +66,7 @@ function Friend({ friendData }) {
       ) : (
         <p>""</p>
       )}
-      <button className="button">Select</button>
+      <Button>Select</Button>
     </li>
   );
 }
