@@ -36,8 +36,10 @@ export default function App() {
       <div className="sidebar">
         <List />
         {displayAddFriend && <FormAddFriend />}
-        <Button onClick={handleAddFriend}>Add Friend</Button>
-        <Button>Close</Button>
+        <Button onClick={handleAddFriend}>
+          {!displayAddFriend ? "Add Friend" : "Close"}
+        </Button>
+        {/* <Button>Close</Button> */}
       </div>
       <SplitBill />
     </div>
