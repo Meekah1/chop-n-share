@@ -25,19 +25,26 @@ const initialFriends = [
 ];
 
 export default function App() {
-  const [displayAddFriend, setDisplayAddFriend] = useState(false);
+  const [friends, setFriends] = useState(initialFriends);
+  const [displayFriend, setDisplayFriend] = useState(false);
 
-  function handleAddFriend() {
-    setDisplayAddFriend((displayAddFriend) => !displayAddFriend);
+  // const result = addFriend;
+
+  function handleDisplayFriend() {
+    setDisplayFriend((displayFriend) => !displayFriend);
+  }
+
+  function handleAddFriend(friend1) {
+    setFriends((friends) => [...friends, friend1]);
   }
 
   return (
     <div className="app">
       <div className="sidebar">
-        <List />
-        {displayAddFriend && <FormAddFriend />}
-        <Button onClick={handleAddFriend}>
-          {!displayAddFriend ? "Add Friend" : "Close"}
+        <List friend1={friends} />
+        {displayFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
+        <Button onClick={handleDisplayFriend}>
+          {!displayFriend ? "Add Friend" : "Close"}
         </Button>
         {/* <Button>Close</Button> */}
       </div>
@@ -46,10 +53,10 @@ export default function App() {
   );
 }
 
-function List() {
+function List({ friend1 }) {
   return (
-    <div>
-      {initialFriends.map((el) => (
+    <div key={friend1.id}>
+      {friend1.map((el) => (
         <Friend friendData={el} key={el.id} />
       ))}
     </div>
