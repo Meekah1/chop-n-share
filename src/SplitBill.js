@@ -1,4 +1,5 @@
 import React from "react";
+// import { useState } from "react";
 import Button from "./Button";
 
 function SplitBill({ selectedFriend }) {
@@ -9,13 +10,13 @@ function SplitBill({ selectedFriend }) {
       <input type="text" />
       <label htmlFor="">🧔🏽Your expenses</label>
       <input type="text" />
-      <label htmlFor="">🧑🏻‍🤝‍🧑🏻X's Expenses</label>
+      <label htmlFor="">🧑🏻‍🤝‍🧑🏻{selectedFriend.name}'s Expenses</label>
       <input type="text" disabled />
 
       <label htmlFor="">🤑 Who is paying the Bill</label>
       <select name="" id="">
         <option value="user">You</option>
-        <option value="friend">Friend</option>
+        <option value="friend">{selectedFriend.name}</option>
       </select>
 
       <Button>Split bill</Button>

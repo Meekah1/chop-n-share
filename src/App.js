@@ -35,19 +35,19 @@ export default function App() {
     setDisplayFriend((displayFriend) => !displayFriend);
   }
 
-  function handleAddFriend(friend1) {
-    setFriends((friends) => [...friends, friend1]);
+  function handleAddFriend(friend) {
+    setFriends((friends) => [...friends, friend]);
     setDisplayFriend(false);
   }
 
-  function handleSelection(friend1) {
-    setSelectedFriend(friend1);
+  function handleSelection(friend) {
+    setSelectedFriend(friend);
   }
 
   return (
     <div className="app">
       <div className="sidebar">
-        <List friend1={friends} onSelection={handleSelection} />
+        <List friend={friends} onSelection={handleSelection} />
         {displayFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
         <Button onClick={handleDisplayFriend}>
           {!displayFriend ? "Add Friend" : "Close"}
@@ -59,10 +59,10 @@ export default function App() {
   );
 }
 
-function List({ friend1, onSelection }) {
+function List({ friend, onSelection }) {
   return (
-    <div key={friend1.id}>
-      {friend1.map((el) => (
+    <div key={friend.id}>
+      {friend.map((el) => (
         <Friend friendData={el} key={el.id} onSelection={onSelection} />
       ))}
     </div>
@@ -88,7 +88,7 @@ function Friend({ friendData, onSelection }) {
       ) : (
         <p>""</p>
       )}
-      <Button onClick={() => onSelection(friendData.name)}>Select</Button>
+      <Button onClick={() => onSelection(friendData)}>Select</Button>
     </li>
   );
 }
