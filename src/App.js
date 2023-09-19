@@ -47,7 +47,11 @@ export default function App() {
   return (
     <div className="app">
       <div className="sidebar">
-        <List friend={friends} onSelection={handleSelection} />
+        <List
+          friend={friends}
+          selectedFriend={selectedFriend}
+          onSelection={handleSelection}
+        />
         {displayFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
         <Button onClick={handleDisplayFriend}>
           {!displayFriend ? "Add Friend" : "Close"}
@@ -59,19 +63,29 @@ export default function App() {
   );
 }
 
-function List({ friend, onSelection }) {
+function List({ friend, onSelection, selectedFriend }) {
   return (
     <div key={friend.id}>
       {friend.map((el) => (
-        <Friend friendData={el} key={el.id} onSelection={onSelection} />
+        <Friend
+          friendData={el}
+          key={el.id}
+          selectedFriend={selectedFriend}
+          friend={friend}
+          onSelection={onSelection}
+        />
       ))}
     </div>
   );
 }
 
-function Friend({ friendData, onSelection }) {
+function Friend({ friendData, onSelection, selectedFriend }) {
+  const isSelected = selectedFriend && selectedFriend.id === friendData.id;
+  // the following is the instructors code and it didn't work
+  // const isSelected = selectedFriend.id === friendData.id
+
   return (
-    <li>
+    <li className={isSelected ? "selected" : ""}>
       <img src={friendData.image} alt={friendData.name} />
       <h3>{friendData.name}</h3>
 
@@ -88,7 +102,9 @@ function Friend({ friendData, onSelection }) {
       ) : (
         <p>""</p>
       )}
-      <Button onClick={() => onSelection(friendData)}>Select</Button>
+      <Button onClick={() => onSelection(friendData)}>
+        {isSelected ? "Close" : "Select"}
+      </Button>
     </li>
   );
 }
